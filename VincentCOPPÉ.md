@@ -1,2 +1,2 @@
 12/21/17
-coucou j'ai rien fait pour l'instant 
+j'ai créer un premier personnage en pixel art pour le jeu 
