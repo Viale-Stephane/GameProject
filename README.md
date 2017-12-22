@@ -1,4 +1,4 @@
-![Polytech](http://www.polytechnice.fr/jahia/jsp/jahia/templates/inc/img/polytech_nicesophia.png)
+![Polytech](http://www.polytechnice.fr/jahia/webdav/site/polytech/shared/PUB/visuels/officiel/polytech_unice/Logo_Polytech_300_CMJN_EN.jpg)
 Ce projet est réalisé dans le cadre de la formation de prépa intégrée de Polytech'Nice Sophia
 # GameProject
 Projet d'arduino : jeu avec commande bluetooth/wifi via téléphone + contrôle/éléments de gameplay sur le téléphone 
