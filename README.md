@@ -1,10 +1,10 @@
 ![Polytech](http://www.polytechnice.fr/jahia/webdav/site/polytech/shared/PUB/visuels/officiel/polytech_network/network/POLYTECH_RVB.jpg)
 Ce projet est réalisé dans le cadre de la formation de prépa intégrée de Polytech'Nice Sophia
-# VIKING THE GAME 
-![VIKING THE GAME](https://imageshack.com/a/img923/9070/TpvUE9.png)
+# COLOR PANIC 
+![COLOR PANIC](https://www.noelshack.com/2018-02-3-1515581412-color-panic0001.png)
 Projet d'arduino : jeu avec commande bluetooth/wifi via téléphone + contrôle/éléments de gameplay sur le téléphone 
-                   Type de jeu : Medieval Metroidvania 
-                   Eléments de gameplay : 2 classes(peut etre)/easteregg/coop/..
+                   Type de jeu : Platform Puzzle
+                   Eléments de gameplay : 6 powerup/easteregg
 
 Répartition des tâches : -Sound Design Vincent
                          -Graphismes Vincent
