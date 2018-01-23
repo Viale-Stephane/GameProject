@@ -2,9 +2,10 @@
 Ce projet est réalisé dans le cadre de la formation de prépa intégrée de Polytech'Nice Sophia
 # COLOR PANIC 
 ![COLOR PANIC](https://image.noelshack.com/fichiers/2018/04/2/1516706919-title-screen.png)
-Projet d'arduino : jeu avec commande bluetooth/wifi via téléphone + contrôle/éléments de gameplay sur le téléphone 
+Projet d'arduino : jeu avec commande bluetooth/wifi via téléphone + contrôle/éléments de gameplay sur le téléphone (sauvegarde) 
                    Type de jeu : Platform Puzzle
                    Eléments de gameplay : 6 powerup/easteregg
+                   portage du jeu sur une borne d'arcade 
 
 Répartition des tâches : -Sound Design Vincent
                          -Graphismes Vincent
