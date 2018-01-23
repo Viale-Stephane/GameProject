@@ -1,7 +1,7 @@
-![Polytech](http://www.polytechnice.fr/jahia/webdav/site/polytech/shared/PUB/visuels/officiel/polytech_network/network/POLYTECH_RVB.jpg)
+![Polytech](http://www.polytechnice.fr/jahia/jsp/jahia/templates/inc/img/polytech_nicesophia.png)
 Ce projet est réalisé dans le cadre de la formation de prépa intégrée de Polytech'Nice Sophia
 # COLOR PANIC 
-![COLOR PANIC](https://image.noelshack.com/fichiers/2018/02/4/1515697226-title-screen.png)
+![COLOR PANIC](https://image.noelshack.com/fichiers/2018/04/2/1516706919-title-screen.png)
 Projet d'arduino : jeu avec commande bluetooth/wifi via téléphone + contrôle/éléments de gameplay sur le téléphone 
                    Type de jeu : Platform Puzzle
                    Eléments de gameplay : 6 powerup/easteregg
