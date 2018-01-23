@@ -7,3 +7,7 @@ creation d'un écran titre, plusieurs texture pour les elements du jeu ( wood, d
 changement de nom et d'idée pour le jeu, creation de 6 animation de marche pour le personnage et ces variation et des sprites pour les token disponible en jeu 
 11/01/2018
 creation de 15 texture differentes pour les block du jeu + creation de 5 texture pour des piques 
+20/01/2018
+creation d'une musique pour l'écran titre du jeu/ écran titre presque complet
+le type de jeu et le gameplay interne est désormais parfaitement défini et ya plus qu'a 
+
