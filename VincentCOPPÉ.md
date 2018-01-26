@@ -10,4 +10,7 @@ creation de 15 texture differentes pour les block du jeu + creation de 5 texture
 20/01/2018
 creation d'une musique pour l'écran titre du jeu/ écran titre presque complet
 le type de jeu et le gameplay interne est désormais parfaitement défini et ya plus qu'a 
+24/01/2018
+passage a l'oral pour presenter le sujet et commande du matériel pour la borne 
+creation d'un objet checkpoint 
 
