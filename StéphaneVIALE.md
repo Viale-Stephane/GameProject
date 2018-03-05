@@ -7,3 +7,5 @@
 24/01/2018 : programmation de l'interaction entre les murs/plafonds avec le personnage.
 
 19/02/2018 : amelioration du système de saut et implémentation des différents sprites du personnage.
+
+05/03/2018 : finition de l'applet de création de niveaux.
