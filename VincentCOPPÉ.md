@@ -13,4 +13,6 @@ le type de jeu et le gameplay interne est désormais parfaitement défini et ya 
 24/01/2018
 passage a l'oral pour presenter le sujet et commande du matériel pour la borne 
 creation d'un objet checkpoint 
-
+06/03/2018
+j'ai entierement finit tout les assets pour le jeu 
+j'ai commencé les musiques et j'en ai deja fait 7 plus une jaquette pour l'ost 
