@@ -11,6 +11,7 @@
 05/03/2018 : finition de l'applet de création de niveaux.
 
 05/04/2018 : ça fait un mois mais j'ai pas rien fait j'ai juste oublié ce fichier xd,
+
              changement de l'applet : -possibilité de placer tous les blocs, les piques, et ce, dans tout les sens.
                                       -ajout de la possibilité d'ajouter des bonus (bonusDoubleJump, bonusTP,bonusDash,bonusGravitySwap, 
                                        Bonus noClip.
