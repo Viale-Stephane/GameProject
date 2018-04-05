@@ -13,16 +13,15 @@
 05/04/2018 : ça fait un mois mais j'ai pas rien fait j'ai juste oublié ce fichier xd,
              changement de l'applet : -possibilité de placer tous les blocs, les piques, et ce, dans tout les sens.
                                       -ajout de la possibilité d'ajouter des bonus (bonusDoubleJump, bonusTP,bonusDash,bonusGravitySwap, 
-                                      Bonus noClip.
+                                       Bonus noClip.
                                       -bouton fonctionnant comme une gomme (affecte empty aux cases vides)
                                       -choix de la position du hero sur le niveau
                                       -blocs de fin de niveau ayant de fonction, la première, comme son nom l'indique de passer à autre 
                                        niveau, peu importe lequel. La seconde, si voulu de passer à travers un mur pour aller de l'autre
                                        côté (donc aller d'à gauche à et inversement instantanément sans passer par le milieu).
-                                      -possibilité de naviguer d'un niveau à l'autre directement dans l'éditeur
+                                      -possibilité de naviguer d'un niveau à l'autre directement dans l'éditeur.
                                       -bouton pour réinitialiser un niveau.
-                                      -choix pour changer la couleur du background d'un niveau en RGB
-                                      -
+                                      -choix pour changer la couleur du background d'un niveau en RGB.
                                       
                                       
              changement du jeu : -amelioration du système de déplacement pour qu'il soit très lisse (encore quelques problèmes)
