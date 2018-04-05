@@ -26,3 +26,8 @@ j'ai commencé les musiques et j'en ai deja fait 7 plus une jaquette pour l'ost
 28/03/2018
 j'ai finit 9 musiques sur 10 et j'ai commencé un modèle 3D de la borne 
 
+05/04/2018
+Toute les musiques sont finit
+il ne manque que 2-3 sprites/animations pour finir tout les assets ( plateformes mobiles / ennemis scripté )
+bruitage en cours de création
+j'ai commencé a designer les niveau au papier que j'implementerai plus tard grace à l'editeur de niveau 
