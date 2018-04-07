@@ -37,5 +37,6 @@
                                  -passage d'un côté à l'autre avec la case end fonctionnelle
                                  -animations de tout les bonus
                                  -positions de hitbox de tous les bonus
+ 07/04/2018 : programmation du bonus gravitySwap
                                  
   
