@@ -27,6 +27,7 @@
                                       
              changement du jeu : -amelioration du système de déplacement pour qu'il soit très lisse (encore quelques problèmes)
                                  -changement de l'implémentation des sprites (maintenant s'implemente avec des .gif)
+                                 -animation de bonus intégrées
                                  -programmations de trois bonus : -doubleJump(animations fonctionnelles)
                                                                   -TP        (problème d'animations)
                                                                   -dash      (problème d'animations)
@@ -35,5 +36,6 @@
                                  -changement d'animation en fonction du bonus fonctionnelle
                                  -passage d'un côté à l'autre avec la case end fonctionnelle
                                  -animations de tout les bonus
-                                 -positions de hitbox de tout les bonus
-                                 -
+                                 -positions de hitbox de tous les bonus
+                                 
+  
