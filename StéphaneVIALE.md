@@ -52,6 +52,3 @@
 -Amélioration du visuel du bonusGravitySwap (plus de reset à chaque tour de boucle quand on active le bonus et que l'on est à l'envers mais un reset seulement quand on passe du sol au plafond)
 -Implémentation de l'animation du bonusDash
 
-1 banane
-2 patate
-3 pd
