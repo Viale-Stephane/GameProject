@@ -5,19 +5,15 @@
 * 19/02/2018 : amelioration du système de saut et implémentation des différents sprites du personnage.
 * 05/03/2018 : finition de l'applet de création de niveaux.
 * 05/04/2018 : ça fait un mois mais j'ai pas rien fait j'ai juste oublié ce fichier xd,
-
-
-1. changement de l'applet : * possibilité de placer tous les blocs, les piques, et ce, dans tout les sens.
-                                      * ajout de la possibilité d'ajouter des bonus (bonusDoubleJump, bonusTP,bonusDash,bonusGravitySwap, 
-                                       Bonus noClip.
-                                      * bouton fonctionnant comme une gomme (affecte empty aux cases vides)
-                                      * choix de la position du hero sur le niveau
-                                      * blocs de fin de niveau ayant de fonction, la première, comme son nom l'indique de passer à autre 
-                                       niveau, peu importe lequel. La seconde, si voulu de passer à travers un mur pour aller de l'autre
-                                       côté (donc aller d'à gauche à et inversement instantanément sans passer par le milieu).
-                                      * possibilité de naviguer d'un niveau à l'autre directement dans l'éditeur.
-                                      * bouton pour réinitialiser un niveau.
-                                      * choix pour changer la couleur du background d'un niveau en RGB.           
+1. changement de l'applet : 
+* possibilité de placer tous les blocs, les piques, et ce, dans tout les sens.
+* ajout de la possibilité d'ajouter des bonus (bonusDoubleJump,bonusTP,bonusDash,bonusGravitySwap,Bonus noClip.
+* bouton fonctionnant comme une gomme (affecte empty aux cases vides)
+* choix de la position du hero sur le niveau.
+* blocs de fin de niveau ayant de fonction, la première, comme son nom l'indique de passer à autre niveau, peu importe lequel. La seconde, si voulu de passer à travers un mur pour aller de l'autre côté (donc aller d'à gauche à et inversement instantanément sans passer par le milieu).
+* possibilité de naviguer d'un niveau à l'autre directement dans l'éditeur.
+* bouton pour réinitialiser un niveau.
+* choix pour changer la couleur du background d'un niveau en RGB.           
 2. changement du jeu : * amelioration du système de déplacement pour qu'il soit très lisse (encore quelques problèmes)
                                  * changement de l'implémentation des sprites (maintenant s'implemente avec des .gif)
                                  * animation de bonus intégrées
@@ -37,7 +33,8 @@
  15/04/2018 : installation d'unix sur la raspberry, branchement de l'écran et installation logicielle de processing
 
 
- 18/04/2018 : * correction d'un bug qui faisait que le jeu était trois fois plus lent sur raspberry que sur un ordinateur classique (problème de puissance de la raspberry, elle faisait trois fois moins vite des tours de boucles en gros). 
+ 18/04/2018 :
+ * correction d'un bug qui faisait que le jeu était trois fois plus lent sur raspberry que sur un ordinateur classique (problème de puissance de la raspberry, elle faisait trois fois moins vite des tours de boucles en gros). 
  * Ajout sur l'applet de la porte de fin de niveau, du bonus Piece qui est un token ramassé (ou non) dans les niveaux dans le bus d'être comptabilisé dans le score pour avoir le plus de points possible.
  * Changement des couleurs sur l'applet pour que les cases de bonus soient associées aux bons bonus.
 
@@ -45,7 +42,8 @@
 19/04/2018 : Implémentation du bonusPoints dans le jeu
 
 
-01/05/2018 : * Branchement du joystick et des boutons sur la raspberry PI(+ fonctionnement logiciel de ces derniers pour le jeu)
+01/05/2018 : 
+* Branchement du joystick et des boutons sur la raspberry PI(+ fonctionnement logiciel de ces derniers pour le jeu)
 * Amélioration du visuel du bonusGravitySwap (plus de reset à chaque tour de boucle quand on active le bonus et que l'on est à l'envers mais un reset seulement quand on passe du sol au plafond)
 * Implémentation de l'animation du bonusDash
 
