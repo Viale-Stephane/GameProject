@@ -37,9 +37,9 @@
  `* Ajout sur l'applet de la porte de fin de niveau, du bonus Piece qui est un token ramassé (ou non) dans les niveaux dans le bus d'être comptabilisé dans le score pour avoir le plus de points possible.`
  `* Changement des couleurs sur l'applet pour que les cases de bonus soient associées aux bons bonus.`
  
-*19/04/2018 : Implémentation du bonusPoints dans le jeu
+* 19/04/2018 : Implémentation du bonusPoints dans le jeu
 
-*01/05/2018 : 
+* 01/05/2018 : 
 `* Branchement du joystick et des boutons sur la raspberry PI(+ fonctionnement logiciel de ces derniers pour le jeu)`
 `* Amélioration du visuel du bonusGravitySwap (plus de reset à chaque tour de boucle quand on active le bonus et que l'on est à l'envers mais un reset seulement quand on passe du sol au plafond)`
 `* Implémentation de l'animation du bonusDash`
