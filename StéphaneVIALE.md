@@ -1,14 +1,20 @@
 21/12/2017 : j'ai créé le projet et les fichiers pour annoncer notre avancement dans notre projet. début d'apprentissage du java        graphics.
 
+
 10/01/2018 : abandon du java comme langage et passage sur du processing,programmation du mouvement du personnage et recherche l'intégration de sprite pour le mouvement du personnage.
+
 
 17/01/2018 : utilisation du processing pour coder une applet permettant de contrôler les hitbox des différents éléments du jeu.
 
+
 24/01/2018 : programmation de l'interaction entre les murs/plafonds avec le personnage.
+
 
 19/02/2018 : amelioration du système de saut et implémentation des différents sprites du personnage.
 
+
 05/03/2018 : finition de l'applet de création de niveaux.
+
 
 05/04/2018 : ça fait un mois mais j'ai pas rien fait j'ai juste oublié ce fichier xd,
 
@@ -41,7 +47,9 @@
                                  
  15/04/2018 : installation d'unix sur la raspberry, branchement de l'écran et installation logicielle de processing
 
- 18/04/2018 : -correction d'un bug qui faisait que le jeu était trois fois plus lent sur raspberry que sur un ordinateur classique (problème de puissance de la raspberry, elle faisait trois fois moins vite des tours de boucles en gros).
+ 18/04/2018 :
+ 
+ 							-correction d'un bug qui faisait que le jeu était trois fois plus lent sur raspberry que sur un ordinateur classique (problème de puissance de la raspberry, elle faisait trois fois moins vite des tours de boucles en gros).
               -Ajout sur l'applet de la porte de fin de niveau, du bonus Piece qui est un token ramassé (ou non) dans les niveaux dans le bus d'être comptabilisé dans le score pour avoir le plus de points possible.
               -Changement des couleurs sur l'applet pour que les cases de bonus soient associées aux bons bonus.
 
