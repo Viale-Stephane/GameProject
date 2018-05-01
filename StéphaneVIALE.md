@@ -72,7 +72,8 @@
  
 * 19/04/2018 : Implémentation du bonusPoints dans le jeu
 
-* 01/05/2018 : `* Branchement du joystick et des boutons sur la raspberry PI(+ fonctionnement logiciel de ces derniers pour le jeu)`
+* 01/05/2018 : 
+`* Branchement du joystick et des boutons sur la raspberry PI(+ fonctionnement logiciel de ces derniers pour le jeu)`
 
 `* Amélioration du visuel du bonusGravitySwap (plus de reset à chaque tour de boucle quand on active le bonus et que l'on est à l'envers mais un reset seulement quand on passe du sol au plafond)`
 
