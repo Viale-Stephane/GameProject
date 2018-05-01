@@ -10,11 +10,11 @@
 
 * 05/04/2018 : ça fait un mois mais j'ai pas rien fait j'ai juste oublié ce fichier xd,
 
-`1. changement de l'applet :` 
+`1. changement de l'applet :`
 
-`* possibilité de placer tous les blocs, les piques, et ce, dans tout les sens.`
+``* possibilité de placer tous les blocs, les piques, et ce, dans tout les sens.``
 
-`* ajout de la possibilité d'ajouter des bonus (bonusDoubleJump,bonusTP,bonusDash,bonusGravitySwap,BonusnoClip).`
+``* ajout de la possibilité d'ajouter des bonus (bonusDoubleJump,bonusTP,bonusDash,bonusGravitySwap,BonusnoClip).``
 
 `* bouton fonctionnant comme une gomme (affecte empty aux cases vides)`
 
