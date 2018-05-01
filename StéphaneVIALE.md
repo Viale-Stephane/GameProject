@@ -17,7 +17,7 @@
 
 
 05/04/2018 : ça fait un mois mais j'ai pas rien fait j'ai juste oublié ce fichier xd,
-             changement de l'applet : * possibilité de placer tous les blocs, les piques, et ce, dans tout les sens.
+            1. changement de l'applet : * possibilité de placer tous les blocs, les piques, et ce, dans tout les sens.
                                       * ajout de la possibilité d'ajouter des bonus (bonusDoubleJump, bonusTP,bonusDash,bonusGravitySwap, 
                                        Bonus noClip.
                                       * bouton fonctionnant comme une gomme (affecte empty aux cases vides)
@@ -27,9 +27,8 @@
                                        côté (donc aller d'à gauche à et inversement instantanément sans passer par le milieu).
                                       * possibilité de naviguer d'un niveau à l'autre directement dans l'éditeur.
                                       * bouton pour réinitialiser un niveau.
-                                      * choix pour changer la couleur du background d'un niveau en RGB.
-                                      
-             changement du jeu : * amelioration du système de déplacement pour qu'il soit très lisse (encore quelques problèmes)
+                                      * choix pour changer la couleur du background d'un niveau en RGB.           
+            2. changement du jeu : * amelioration du système de déplacement pour qu'il soit très lisse (encore quelques problèmes)
                                  * changement de l'implémentation des sprites (maintenant s'implemente avec des .gif)
                                  * animation de bonus intégrées
                                  * programmations de trois bonus : `* doubleJump(animations fonctionnelles)`
@@ -49,11 +48,7 @@
 
 
  18/04/2018 : * correction d'un bug qui faisait que le jeu était trois fois plus lent sur raspberry que sur un ordinateur classique (problème de puissance de la raspberry, elle faisait trois fois moins vite des tours de boucles en gros). 
- 
- 
  * Ajout sur l'applet de la porte de fin de niveau, du bonus Piece qui est un token ramassé (ou non) dans les niveaux dans le bus d'être comptabilisé dans le score pour avoir le plus de points possible.
- 
- 
  * Changement des couleurs sur l'applet pour que les cases de bonus soient associées aux bons bonus.
 
 
