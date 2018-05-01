@@ -1,3 +1,8 @@
+* ta mère
+* ta grand mère
+`* ton arrière-grand mère`
+* la pute
+
 21/12/2017 : j'ai créé le projet et les fichiers pour annoncer notre avancement dans notre projet. début d'apprentissage du java        graphics.
 
 
@@ -50,19 +55,19 @@
  15/04/2018 : installation d'unix sur la raspberry, branchement de l'écran et installation logicielle de processing
 
 
- 18/04/2018 :*correction d'un bug qui faisait que le jeu était trois fois plus lent sur raspberry que sur un ordinateur classique (problème de puissance de la raspberry, elle faisait trois fois moins vite des tours de boucles en gros). 
+ 18/04/2018 : * correction d'un bug qui faisait que le jeu était trois fois plus lent sur raspberry que sur un ordinateur classique (problème de puissance de la raspberry, elle faisait trois fois moins vite des tours de boucles en gros). 
  
  
- *Ajout sur l'applet de la porte de fin de niveau, du bonus Piece qui est un token ramassé (ou non) dans les niveaux dans le bus d'être comptabilisé dans le score pour avoir le plus de points possible.
+ * Ajout sur l'applet de la porte de fin de niveau, du bonus Piece qui est un token ramassé (ou non) dans les niveaux dans le bus d'être comptabilisé dans le score pour avoir le plus de points possible.
  
  
- *Changement des couleurs sur l'applet pour que les cases de bonus soient associées aux bons bonus.
+ * Changement des couleurs sur l'applet pour que les cases de bonus soient associées aux bons bonus.
 
 
-19/04/2018 : -Implémentation du bonusPoints dans le jeu
+19/04/2018 : Implémentation du bonusPoints dans le jeu
 
 
-01/05/2018 : *Branchement du joystick et des boutons sur la raspberry PI(+ fonctionnement logiciel de ces derniers pour le jeu)
-*Amélioration du visuel du bonusGravitySwap (plus de reset à chaque tour de boucle quand on active le bonus et que l'on est à l'envers mais un reset seulement quand on passe du sol au plafond)
-*Implémentation de l'animation du bonusDash
+01/05/2018 : * Branchement du joystick et des boutons sur la raspberry PI(+ fonctionnement logiciel de ces derniers pour le jeu)
+* Amélioration du visuel du bonusGravitySwap (plus de reset à chaque tour de boucle quand on active le bonus et que l'on est à l'envers mais un reset seulement quand on passe du sol au plafond)
+* Implémentation de l'animation du bonusDash
 
