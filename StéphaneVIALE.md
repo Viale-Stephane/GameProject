@@ -77,5 +77,9 @@
 
 `* Amélioration du visuel du bonusGravitySwap (plus de reset à chaque tour de boucle quand on active le bonus et que l'on est à l'envers mais un reset seulement quand on passe du sol au plafond)`
 
-`* Implémentation de l'animation du bonusDash`
+`* Implémentation du fonctionnement de l'animation du bonusDash`
 
+* 02/05/2018:
+`* Programmation du fonctionnement de la musique pour le jeu `
+`* Programmation sur l'éditeur du choix de la musique pour chaque niveaux `
+`* Fin de l'amélioration de l'animation du bonusDash, animation inclue et collision de l'animation avec le mur`
