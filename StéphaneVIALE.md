@@ -80,6 +80,9 @@
 `* Implémentation du fonctionnement de l'animation du bonusDash`
 
 * 02/05/2018:
+
 `* Programmation du fonctionnement de la musique pour le jeu `
+
 `* Programmation sur l'éditeur du choix de la musique pour chaque niveaux `
+
 `* Fin de l'amélioration de l'animation du bonusDash, animation inclue et collision de l'animation avec le mur`
