@@ -89,4 +89,6 @@
 
 * 03/05/2018:
 
-'* je test '
+`* Programmation d'une fonction permettant de rentrer un pseudo dans le jeu `
+`* Implémentation des SFX "death", "Gswap", "jump", "powerup", "TP" `
+*
