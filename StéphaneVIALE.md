@@ -91,3 +91,24 @@
 
 `* Programmation d'une fonction permettant de rentrer un pseudo dans le jeu `
 `* Implémentation des SFX "death", "Gswap", "jump", "powerup", "TP" `
+
+* 05/05/2018:
+
+`* création d'un niveau labyrinthe`
+`* correction d'un problème avec plusieurs door dans un même niveau`
+`* Implémentation du choix du pseudo avant de lancer le jeu`
+
+* 07/05/2018:
+
+`* Implémentation de try/catch pour supprimer les problème d'array index`
+
+* 09/05/2018:
+
+`* Changement de l'encodage des niveaux de telle sorte que la hitbox des wallLine soit plus réaliste`
+
+* 12/05/2018:
+
+`* Changement du dash pour que quand il soit fait en l'air on reste sur le même y`
+`* Correction du timer pour qu'il soit fonctionnel, et ceux même si on met le jeu en pause`
+`* implémentation du menu du jeu avec l'option jouer complémentement fonctionnelle, l'option load presque fonctionnelle (il ne reste plus qu'à recharger la valeur du timer stocké dans le fichier de sauvegarde), la page de crédit n'est pas encore faite dans le menu`
+`* Implémentation du chargement d'une partie à l'intérieur du menu`
