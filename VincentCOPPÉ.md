@@ -31,3 +31,8 @@ Toute les musiques sont finit
 il ne manque que 2-3 sprites/animations pour finir tout les assets ( plateformes mobiles / ennemis scripté )
 bruitage en cours de création
 j'ai commencé a designer les niveau au papier que j'implementerai plus tard grace à l'editeur de niveau 
+
+22/05/2018
+les 3 premier mondes de niveau sont finit le quatrième est en cours 
+tout les bruitages sont finit 
+la borne est terminée niveau bois elle contient les boutons les hautparleur il reste a mettre l'écran et la pi lorsque le jeu sera finit à 100%
