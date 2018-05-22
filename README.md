@@ -10,4 +10,5 @@ Projet d'arduino : jeu avec commande bluetooth/wifi via téléphone + contrôle/
 Répartition des tâches : -Sound Design Vincent
                          -Graphismes Vincent
                          -Majorité de la programmation Stéphane
-                         -Creation de la borne Vincent/Stéphane
+                         -Creation de la borne Vincent
+                         -level design Vincent/Stéphane
