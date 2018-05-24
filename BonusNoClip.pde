@@ -1,3 +1,4 @@
+//----------------------------------------DEBUT-BONUS-NON-FONCTIONNEL-------------------------------//
 class BonusNoClip extends Bonus {
   public boolean noClip=false,trigNoClip=false;
 
@@ -5,3 +6,4 @@ class BonusNoClip extends Bonus {
     super.animation(powerupN,"BnoClip");
   }
 }
+//-------------------------------------FIN-BONUS-NON-FONCTIONNEL-----------------------------------//

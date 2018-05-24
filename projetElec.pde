@@ -1,3 +1,5 @@
+//----------------------BEGIN-IMPORT-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+
 import ddf.minim.*;
 import ddf.minim.analysis.*;
 import ddf.minim.effects.*;
@@ -9,8 +11,9 @@ import gifAnimation.*;
 
 import java.io.*;
 import java.lang.*;
+//----------------------END-IMPORT--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 
-boolean firstMusic=true;
+//--------BEGIN-CREATION-GLOBAL-VARIABLES------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 char GAUCHE='q', DROITE='d', HAUT='z', BAS='s', ACTION='j', PAUSE='p' ;
 PImage heroJumpBlueR, heroJumpBlueL, heroJumpGreenR, heroJumpGreenL, heroJumpBlackR, heroJumpBlackL, heroJumpPurpleR, heroJumpPurpleL, heroJumpRedR, heroJumpRedL, heroJumpVeridianR, heroJumpVeridianL, heroJumpGSwapR, heroJumpGSwapL;
 PImage heroIdleBlueL, heroIdleBlueR, heroIdleGreenL, heroIdleGreenR, heroIdleBlackL, heroIdleBlackR, heroIdlePurpleL, heroIdlePurpleR, heroIdleRedL, heroIdleRedR, heroIdleVeridianL, heroIdleVeridianR, heroIdleGSwapL, heroIdleGSwapR;
@@ -23,23 +26,16 @@ PFont font, font52;
 int levelNumber=0, initialTime=0;
 int second=0, minute=0, hour=0, millisPaused=0, timeStopped, millis;
 
-AudioPlayer musicBurn;
-AudioPlayer musicColorPanic;
-AudioPlayer musicJourneyBegin; // premier monde
-AudioPlayer musicNewPower;
-AudioPlayer musicRetroRide; //écran titre
-AudioPlayer musicRise;
-AudioPlayer musicTheLastBattle;
-AudioPlayer musicTheOne;
-AudioPlayer musicValk;
-AudioPlayer actualMusic;
+AudioPlayer actualMusic;//chargement de seulement 5 variables pour le son sinon ce que j'imagine
 
-AudioSample death;
-AudioSample Gswap;
+AudioSample mvtInterfaceANDdeath;//être le buffer de la raspberry est surchargé et refuse
+AudioSample validationInterfaceANDpowerup;//de charger des sons supplémentaires
 AudioSample jump;
-AudioSample powerup;
-AudioSample TP;
-
+AudioSample bonusSFX; 
+//Gswap TP dash
+//death powerup jump
+//mvtInterface validationInterface;
+//soundBonus -> Gswap TP dash
 
 
 Hero hero=new Hero();
@@ -59,6 +55,8 @@ Gif heroDashR, heroDashL;
 Gif heroTPR1, heroTPL1, heroTPR2, heroTPL2;
 Gif heroDeadBlue, heroDeadGreen, heroDeadBlack, heroDeadPurple, heroDeadRed, heroDeadVeridian;
 Gif menu;
+
+//---------------------------END-CREATION-GLOBAL-VARIABLES----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 
 void setup() {
   //----------------------BEGIN-GIF-DEFINITION----------------------------------------------------------------------------//
@@ -190,11 +188,15 @@ void setup() {
   //--------------------END-MUSIC-DEFINITION------------------------------------------------------------------------------//
 
   //-------------------BEGIN-SFX-DEFINITION-------------------------------------------------------------------------------//
-  death=minim.loadSample("Sound/SFX/Death.wav");
-  Gswap=minim.loadSample("Sound/SFX/G-Swap.wav");
-  jump=minim.loadSample("Sound/SFX/Jump.wav");
-  powerup=minim.loadSample("Sound/SFX/Powerup.wav");
-  TP=minim.loadSample("Sound/SFX/TP.wav");
+  //death=minim.loadSample("Sound/SFX/Death.wav");
+  //Gswap=minim.loadSample("Sound/SFX/G-Swap.wav");
+  //jump=minim.loadSample("Sound/SFX/Jump.wav");
+  //powerup=minim.loadSample("Sound/SFX/Powerup.wav");
+  //TP=minim.loadSample("Sound/SFX/TP.wav");
+  //dash=minim.loadSample("Sound/SFX/dash.wav");
+  //validationInterface=minim.loadSample("Sound/SFX/validation.wav");
+  //mvtInterface=minim.loadSample("Sound/SFX/mvtInterface.wav");
+  sound.loadNotBonusSFX();
   //-------------------END-SFX-DEFINITION---------------------------------------------------------------------------------//
   timer=loadImage("data/timer.png");
   deathPNG=loadImage("data/death.png");
@@ -203,9 +205,10 @@ void setup() {
   menuEmpty=loadImage("data/menuEmpty.png");
   font = createFont("Super Mario Bros. NES.ttf", 22);
   font52=createFont("Super Mario Bros. NES.ttf", 52);
-  size(1024, 600);
   actualMusic=sound.musicBegin("Sound/Music/musicRetroRide.mp3");
   interfaces.playerBase=loadStrings("data/playerBase.txt");
+  //fullScreen();
+  size(1024, 600);
 }
 
 void draw() {
@@ -228,17 +231,27 @@ void draw() {
     //println("usernameNumber:"+interfaces.usernameNumber);
   } else if (interfaces.ecranTitre==false && interfaces.leaderboard==true) {
     image(menuEmpty, 0, 0);
-    println("line:"+interfaces.line);
-    println("column:"+interfaces.column);
-    println("actualPage:"+interfaces.actualPage);
-    println("nbPage:"+interfaces.nbPage);
+    //println("line:"+interfaces.line);
+    //println("column:"+interfaces.column);
+    //println("actualPage:"+interfaces.actualPage);
+    //println("nbPage:"+interfaces.nbPage);
     //println("usernameNumber:"+interfaces.usernameNumber);
     interfaces.leaderboard();
     interfaces.visualLeaderboard();
   } else if (interfaces.ecranTitre==false && interfaces.credit==true) {
+    image(menuEmpty, 0, 0);
+    interfaces.credits();
   } else if (interfaces.save==true) {
     image(menuEmpty, 0, 0);
+    //interfaces.firstLoad=true;
+    println("actualPage:"+interfaces.actualPage);
+    println("nbPage:"+interfaces.nbPage);
     interfaces.save();
+  } else if (interfaces.pause==true) {
+    interfaces.pause();
+  } else if (interfaces.inGame==true) {
+    sound.loadNotBonusSFX();
+    interfaces.inGame=false;
   } else {
     image(lvl[levelNumber], 0, 0);
     sound.musicLoop();
@@ -282,7 +295,7 @@ void draw() {
     bonusPoints.animation();
     //hero.wallNoClipheroDelete();
     textSize(22);
-    if (((interfaces.firstLoadedMillis+millis()-initialTime)-timeStopped)%1000<=15) {
+    if (((interfaces.firstLoadedMillis+millis()-initialTime)-timeStopped)%1000<=20) {
       second++;
       if (interfaces.stepMillisIntegration==0) {
         interfaces.firstLoadedMillis=-millis()+initialTime+timeStopped;
@@ -347,11 +360,8 @@ void deplacements(String console) {
       if (hero.nbMontee==0) {
         hero.descente();
         hero.descente();
-        hero.descente();
       }
       if (hero.nbDescente==0) {
-        hero.montee();
-        hero.montee();        
         hero.montee();
         hero.montee();        
         hero.montee();
@@ -360,99 +370,106 @@ void deplacements(String console) {
     }
     hero.mvtGauche();
     hero.mvtGauche();
-    hero.mvtGauche();
-    hero.mvtDroite();    
     hero.mvtDroite();    
     hero.mvtDroite();
   }
 }
 
 void keyReleased() {
-  if (interfaces.setUsername==false && interfaces.load==false && interfaces.ecranTitre==false && interfaces.leaderboard==false && interfaces.save==false) {
-    if (key==GAUCHE && key!=HAUT) {
+  if (hero.VIEHasBeenFalse==false && interfaces.setUsername==false && interfaces.load==false && interfaces.ecranTitre==false && interfaces.leaderboard==false && interfaces.save==false && interfaces.pause==false) {//si on est dans aucunes interfaces
+    if (key==GAUCHE && key!=HAUT) {//on relâche la touche gauche, arrête le mouvement
       hero.gauche=false;
       hero.droite=false;
     }
-    if (key==DROITE && key!=HAUT) {
+    if (key==DROITE && key!=HAUT) {//on relâche la touche droite,arrête le mouvement
       hero.droite=false;
       hero.gauche=false;
     }
-  }
+  }//end if
 }
 void keyPressed() {
-  if (interfaces.firstScreen==true) {
+  if (key=='m') {
+    interfaces.load();
+  }
+  if (interfaces.firstScreen==true) {//actions disponibles pour le premier écran du jeu
     if (key==PAUSE) {
       interfaces.firstScreen=false;
       interfaces.ecranTitre=true;
     }
-  } else if (interfaces.ecranTitre==false && interfaces.setUsername==false && interfaces.load==false && interfaces.leaderboard==false && interfaces.save==false) {
-    if (hero.VIEHasBeenFalse==false && hero.TPActivationP1==false && hero.TPActivationP2==false && hero.VIE==true) {
-      if (((key==HAUT && hero.saut==false) && ((bonusGravitySwap.trigGSwap==false && hitboxLvl[levelNumber][hero.heroPos1+128].startsWith("wall") ||hitboxLvl[levelNumber][hero.heroPos2+128].startsWith("wall") || hitboxLvl[levelNumber][hero.heroPos3+128].startsWith("wall") || hitboxLvl[levelNumber][hero.heroPos4+128].startsWith("wall") || hitboxLvl[levelNumber][hero.heroPos5+128].startsWith("wall") || hitboxLvl[levelNumber][hero.heroPos6+128].startsWith("wall")) || (bonusGravitySwap.trigGSwap==true && hitboxLvl[levelNumber][hero.heroPos18-128].startsWith("wall") ||hitboxLvl[levelNumber][hero.heroPos17-128].startsWith("wall") || hitboxLvl[levelNumber][hero.heroPos16-128].startsWith("wall") || hitboxLvl[levelNumber][hero.heroPos15-128].startsWith("wall") || hitboxLvl[levelNumber][hero.heroPos14-128].startsWith("wall") || hitboxLvl[levelNumber][hero.heroPos13-128].startsWith("wall"))))) {
+  } else if (interfaces.ecranTitre==false && interfaces.setUsername==false && interfaces.load==false && interfaces.leaderboard==false && interfaces.save==false && interfaces.pause==false) {//actions disponibles en jeu
+    if (hero.VIEHasBeenFalse==false && hero.TPActivationP1==false && hero.TPActivationP2==false && hero.VIE==true) { // ne peut réaliser une action dans le jeu que si le hero est en vie et qu'il n'est pas en plein tp
+      if (((key==HAUT && hero.saut==false && bonusGravitySwap.GSwap==false) && ((bonusGravitySwap.trigGSwap==false && hitboxLvl[levelNumber][hero.heroPos1+128].startsWith("wall") ||hitboxLvl[levelNumber][hero.heroPos2+128].startsWith("wall") || hitboxLvl[levelNumber][hero.heroPos3+128].startsWith("wall") || hitboxLvl[levelNumber][hero.heroPos4+128].startsWith("wall") || hitboxLvl[levelNumber][hero.heroPos5+128].startsWith("wall") || hitboxLvl[levelNumber][hero.heroPos6+128].startsWith("wall")) || (bonusGravitySwap.trigGSwap==true && hitboxLvl[levelNumber][hero.heroPos18-128].startsWith("wall") ||hitboxLvl[levelNumber][hero.heroPos17-128].startsWith("wall") || hitboxLvl[levelNumber][hero.heroPos16-128].startsWith("wall") || hitboxLvl[levelNumber][hero.heroPos15-128].startsWith("wall") || hitboxLvl[levelNumber][hero.heroPos14-128].startsWith("wall") || hitboxLvl[levelNumber][hero.heroPos13-128].startsWith("wall"))))) {// si on touche le sol et que l'on a pas de bonus pour inverser la gravité et que l'on souhaite sauter alors
         hero.saut=true;
-        jump.trigger();
+        jump.trigger();//son du saut
       }
-      if (key==HAUT  && bonusDoubleJump.doubleJump==true && hero.jumping==true) {
+      if (key==HAUT  && bonusDoubleJump.doubleJump==true && hero.jumping==true && bonusGravitySwap.GSwap==false) { // si on souhaite sauter en l'air quand on a le bonus double jump
         bonusDoubleJump.trigDoubleJump=true;
-        jump.trigger();
-      }
-      if (key=='m') {
-        int level=levelNumber+1;
-        saveStrings("data/levels/lvlsHitbox/lvl"+level+".txt", hitboxLvl[levelNumber]);
+        jump.trigger();//son du saut
       }
       if (key==ACTION) {
-        if (bonusDash.dash==true && bonusDash.canDash==true) {
+        if (bonusDash.dash==true && bonusDash.canDash==true) {//si on a le bonus pour dash et que l'on a pas déjà dash une fois en l'air
           bonusDash.trigDash=true;
           bonusDash.canDash=false;
+          bonusSFX.trigger();
         }
-        if (bonusTP.bonusTP==true && bonusTP.canTP==true) {
+        if (bonusTP.bonusTP==true && bonusTP.canTP==true) {//si on a le bonus tp et que l'on pas déjà tp une fois en l'air
           bonusTP.trigTP=true;
           bonusTP.canTP=false;
-          TP.trigger();
+          bonusSFX.trigger();//son du tp
         }
+        //-------------------------------------------------------------------DEBUT-BONUS-NON-FONCTIONNEL-------------------------------------------------------------//
         if (bonusNoClip.noClip==true && bonusNoClip.trigNoClip==false) {
           bonusNoClip.trigNoClip=true;
         } else if (bonusNoClip.noClip==true && bonusNoClip.trigNoClip==true) {
           bonusNoClip.trigNoClip=false;
         }
-        if (bonusGravitySwap.GSwap==true && bonusGravitySwap.trigGSwap==false && hero.jumping==false) {
+        //-------------------------------------------------------------FIN-BONUS-NON-FONCTIONNEL-------------------------------------------------------------------//
+        if (bonusGravitySwap.GSwap==true && bonusGravitySwap.trigGSwap==false && hero.jumping==false) { //si on a le bonus d'inversion de gravité, sans sauter, et que la gravité n'est pas inversé alors on l'inverse
           bonusGravitySwap.trigGSwap=true;
           bonusGravitySwap.timeActivationGSwap=true;
-          Gswap.trigger();
-        } else if (bonusGravitySwap.GSwap==true && bonusGravitySwap.trigGSwap==true && hero.jumping==false) {
+          bonusSFX.trigger(); //son inversion de gravité
+        } else if (bonusGravitySwap.GSwap==true && bonusGravitySwap.trigGSwap==true && hero.jumping==false) {//si on a le bonus d'inversion de gravité, sans sauter, et que la gravité n'est inversé alors on la remet normalement
           bonusGravitySwap.trigGSwap=false;
-          Gswap.trigger();
+          bonusSFX.trigger();//son inversion de gravité
         }
       }
-      if (key==PAUSE && isLooping()) {
-        millisPaused=millis();
-        interfaces.save=true;
-        interfaces.firstLoad=true;
-      } else if (key==PAUSE && isLooping()==false) {
-        timeStopped+=millis()-millisPaused;
-        loop();
+      if (key==PAUSE && isLooping() && interfaces.pause==false) {// si on appuie sur la touche de pause et que le jeu tourne, le met en pause
+        millisPaused=millis();//récupère le temps auquel le jeu s'est mis en pause
+        interfaces.pause=true;
+        interfaces.pause();
+        sound.loadNotBonusSFX();
+      } else if (key==PAUSE && interfaces.pause==true) {//si on appuie sur la touche de pause et que le jeu ne tourne pas, le relance
+        timeStopped+=millis()-millisPaused;//recupère la valeur où le jeu était en pause
+        interfaces.pause=false;
+        sound.loadNotBonusSFX();
       }
     }
-  } else if (interfaces.ecranTitre==true || interfaces.setUsername==true || interfaces.load==true || interfaces.leaderboard==true || interfaces.save==true) {
-    interfaces.leftAction();
-    interfaces.rightAction();
-    interfaces.topAction();
-    interfaces.bottomAction();
-    interfaces.confirmAction();
+  } else if (interfaces.ecranTitre==true || interfaces.setUsername==true || interfaces.load==true || interfaces.leaderboard==true || interfaces.save==true ||interfaces.pause==true) {// actions disponibles dans une interface
+    if (key==HAUT ||key==BAS ||key==GAUCHE ||key==DROITE) {    
+      interfaces.leftAction();
+      interfaces.rightAction();
+      interfaces.topAction();
+      interfaces.bottomAction();
+      mvtInterfaceANDdeath.trigger();//son du mouvement dans les interfaces
+    } else if (key==ACTION) {    
+      interfaces.confirmAction();
+      validationInterfaceANDpowerup.trigger();//son de validation dans les interfaces
+    }
   }
 }
 
 
 
 void keyTyped() {
-  if (interfaces.setUsername==false && interfaces.ecranTitre==false && interfaces.load==false && interfaces.leaderboard==false && interfaces.save==false) {
-    if (hero.VIEHasBeenFalse==false && hero.TPActivationP2==false && hero.TPActivationP1==false && hero.DashActivation==false) {
-      if (key==GAUCHE) {
+  if (interfaces.setUsername==false && interfaces.ecranTitre==false && interfaces.load==false && interfaces.leaderboard==false && interfaces.save==false && interfaces.pause==false) {//si on est dans aucune interface
+    if (hero.VIEHasBeenFalse==false && hero.TPActivationP2==false && hero.TPActivationP1==false && hero.DashActivation==false) {//et que l'on est en vie 
+      if (key==GAUCHE) {//lance le mouvement vers la gauche
         hero.lastMove=GAUCHE;
         hero.droite=false;
         hero.gauche=true;
       }
 
-      if (key==DROITE) {
+      if (key==DROITE) {//lance le mouvement vers la droite
         hero.lastMove=DROITE;
         hero.gauche=false;
         hero.droite=true;
