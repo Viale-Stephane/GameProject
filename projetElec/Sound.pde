@@ -43,25 +43,25 @@ class Sound {
     //AudioSample jump;
     //AudioSample bonusSFX; //Gswap TP dash
     if (interfaces.firstScreen==true ||interfaces.ecranTitre==true || interfaces.setUsername==true || interfaces.load==true || interfaces.leaderboard==true || interfaces.save==true ||interfaces.pause==true) {// actions disponibles dans une interface
-      mvtInterfaceANDdeath=minim.loadSample("data/Sound/SFX/mvtInterface.wav");
-      validationInterfaceANDpowerup=minim.loadSample("data/Sound/SFX/validation.wav");
+      mvtInterfaceANDdeath=minim.loadSample("data/Sound/SFX/mvtInterface.mp3");
+      validationInterfaceANDpowerup=minim.loadSample("data/Sound/SFX/validation.mp3");
     } else if (interfaces.inGame==true) {
       mvtInterfaceANDdeath.close();
       validationInterfaceANDpowerup.close();
-      mvtInterfaceANDdeath=minim.loadSample("data/Sound/SFX/Death.wav");
-      validationInterfaceANDpowerup=minim.loadSample("data/Sound/SFX/Powerup.wav");
-      jump=minim.loadSample("data/Sound/SFX/Jump.wav");
+      mvtInterfaceANDdeath=minim.loadSample("data/Sound/SFX/Death.mp3");
+      validationInterfaceANDpowerup=minim.loadSample("data/Sound/SFX/Powerup.mp3");
+      jump=minim.loadSample("data/Sound/SFX/Jump.mp3");
     }
   }
   void loadBonusSFX() {
     if (interfaces.ecranTitre==true || interfaces.setUsername==true || interfaces.load==true || interfaces.leaderboard==true || interfaces.save==true ||interfaces.pause==true) {// actions disponibles dans une interface
     } else {
       if (bonusDash.dash==true) {
-        bonusSFX=minim.loadSample("data/Sound/SFX/dash.wav");
+        bonusSFX=minim.loadSample("data/Sound/SFX/dash.mp3");
       } else if (bonusTP.bonusTP==true) {
-        bonusSFX=minim.loadSample("data/Sound/SFX/TP.wav");
+        bonusSFX=minim.loadSample("data/Sound/SFX/TP.mp3");
       } else if (bonusGravitySwap.GSwap==true) {
-        bonusSFX=minim.loadSample("data/Sound/SFX/G-Swap.wav");
+        bonusSFX=minim.loadSample("data/Sound/SFX/G-Swap.mp3");
       }
     }
   }
