@@ -36,3 +36,6 @@ j'ai commencé a designer les niveau au papier que j'implementerai plus tard gra
 les 3 premier mondes de niveau sont finit le quatrième est en cours 
 tout les bruitages sont finit 
 la borne est terminée niveau bois elle contient les boutons les hautparleur il reste a mettre l'écran et la pi lorsque le jeu sera finit à 100%
+27/05/2018
+Le monde 4 est terminée, le 5 est en cours 
+il reste a faire le rapport, des script bash pour fermer le jeu et pour le démarrer a l'allumage de la console et un script pour envoyer la sauvegarde au telephone  
