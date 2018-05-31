@@ -1,0 +1,2 @@
+#!/bin/bash
+scp -p raspberrypi@raspberrypi:/data/actualPlayer.txt /home/jeremy/dossier/actualPlayer.txt

@@ -1,0 +1,2 @@
+username|coins|actualLevel|timer|death|score
+JVB|0|1|00:00:00:0000|0|0000000

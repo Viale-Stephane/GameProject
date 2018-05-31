@@ -1,0 +1,2 @@
+username|coins|actualLevel|timer
+S|0 |1 |00:00:00

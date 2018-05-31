@@ -1,0 +1,2 @@
+#!/bin/bash
+scp actualPlayer.txt raspberrypi@raspberrypi:~/ColorPanic/data/actualPlayer.txt
