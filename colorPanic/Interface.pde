@@ -1,5 +1,6 @@
 class Interface {
   boolean firstScreen=true, ecranTitre=false, setUsername=false, load=false, credit=false, leaderboard=false, firstLoad=true, firstLeaderboard=true, save=false, pause=false, importing=false, exporting=false;
+  ;
   int line=1, column=1;
   int actualPage=1, usernameNumber=0, usersLength=0;
   int testedValue=1;
@@ -1109,7 +1110,7 @@ class Interface {
     text("entrez la commande suivante :", 10, 200);
     textSize(9);
     textFont(arial);
-    text("\"scp -p pi@colorPanic:/home/pi/colorPanic/application.linux64/data/actualPlayer.txt ~/colorPanic/actualPlayer.txt\"", 10, 250);
+    text("\"scp -p pi@colorPanic:/home/pi/colorPanic/applitcation.linux64/data/actualPlayer.txt ~/colorPanic/actualPlayer.txt\"", 10, 250);
     fill(255, 102, 0, 50);
     stroke(255, 102, 0);
     textFont(font);
@@ -1601,8 +1602,8 @@ class Interface {
         } else if (line==2) {
           interfaces.pause=false;
           sound.closeInterfaceSound();
-        } else {
-          sound.musictitle=true;//retour au menu de démarrage
+        } else {//retour au menu de démarrage
+          sound.musictitle=true;
           playerBase=append(playerBase, pseudo+"|"+bonusPoints.nbPoints+"|"+(levelNumber+1)+"|"+hour+":"+minute+":"+second+":"+str(((millisPaused-initialTime)-timeStopped+(1000*interfaces.is1000)+(interfaces.loadedHour*3600000)+(interfaces.loadedMinute*60000)+(interfaces.loadedSecond*1000)+(interfaces.firstLoadedMillis))-(second*1000)-(minute*60000)-(hour*3600000))+"|"+hero.nbMort+"|0000000");            
           saveStrings("data/playerBase.txt", playerBase);
           usersLength++;
