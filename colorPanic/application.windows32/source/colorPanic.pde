@@ -216,6 +216,12 @@ void draw() {
   if (interfaces.firstScreen==true) {
     image(menu, 0, 0);
   } else if (interfaces.ecranTitre==true) {
+    if (sound.musictitle==true){
+    minim.stop();
+    sound.musicBegin("data/Sound/Music/musicRetroRide.mp3");
+    sound.musictitle=false;
+    }
+    sound.firstMusic=true;
     interfaces.ecranTitre();
   } else if (interfaces.ecranTitre==false && interfaces.setUsername==true) {
     image(menuEmpty, 0, 0);
@@ -252,7 +258,7 @@ void draw() {
     hero.contactEnd();
     hero.TP();
 
-    deplacements("PI");
+    deplacements("PC");
     hero.dash();
     hero.confirmPosition();
     bonusDoubleJump.animation();

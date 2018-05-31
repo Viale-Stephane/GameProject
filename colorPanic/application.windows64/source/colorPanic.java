@@ -242,6 +242,12 @@ public void draw() {
   if (interfaces.firstScreen==true) {
     image(menu, 0, 0);
   } else if (interfaces.ecranTitre==true) {
+    if (sound.musictitle==true){
+    minim.stop();
+    sound.musicBegin("data/Sound/Music/musicRetroRide.mp3");
+    sound.musictitle=false;
+    }
+    sound.firstMusic=true;
     interfaces.ecranTitre();
   } else if (interfaces.ecranTitre==false && interfaces.setUsername==true) {
     image(menuEmpty, 0, 0);
@@ -278,7 +284,7 @@ public void draw() {
     hero.contactEnd();
     hero.TP();
 
-    deplacements("PI");
+    deplacements("PC");
     hero.dash();
     hero.confirmPosition();
     bonusDoubleJump.animation();
@@ -3375,6 +3381,7 @@ class Interface {
           playerBase=append(playerBase, pseudo+"|"+bonusPoints.nbPoints+"|"+(levelNumber+1)+"|"+hour+":"+minute+":"+second+":"+str(((millisPaused-initialTime)-timeStopped+(1000*interfaces.is1000)+(interfaces.loadedHour*3600000)+(interfaces.loadedMinute*60000)+(interfaces.loadedSecond*1000)+(interfaces.firstLoadedMillis))-(second*1000)-(minute*60000)-(hour*3600000))+"|"+hero.nbMort+"|0000000");            
           saveStrings("data/playerBase.txt", playerBase);
           usersLength++;
+          sound.musictitle=true;
           playerBase=loadStrings("data/playerBase.txt");
           bonusPoints.nbPoints=0;
           levelNumber=0;
@@ -3515,6 +3522,7 @@ public void Bashrun(String n) {
 }
 class Sound {
   boolean firstMusic=true;
+  boolean musictitle=false;
   int actualMusicTimer=0;
   public void musicChange() {//fonction qui lance la musique du niveau suivant si elle est différente du niveau actuel (juste avant de passer un niveau)
     if (levelNumber!=59 && !hitboxLvl[levelNumber][128*38].equals(hitboxLvl[levelNumber-1][128*38])) {
@@ -3546,6 +3554,7 @@ class Sound {
   public void musicFirst() {//fonction qui démarre la première musique du jeu
     if (firstMusic==true) {
       musicStop(actualMusic);
+      minim.stop();
       firstMusic=false;
       actualMusic.close();
       mvtInterface.close();

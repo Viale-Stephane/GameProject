@@ -1,5 +1,6 @@
 class Sound {
   boolean firstMusic=true;
+  boolean musictitle=false;
   int actualMusicTimer=0;
   void musicChange() {//fonction qui lance la musique du niveau suivant si elle est différente du niveau actuel (juste avant de passer un niveau)
     if (levelNumber!=59 && !hitboxLvl[levelNumber][128*38].equals(hitboxLvl[levelNumber-1][128*38])) {
@@ -31,6 +32,7 @@ class Sound {
   void musicFirst() {//fonction qui démarre la première musique du jeu
     if (firstMusic==true) {
       musicStop(actualMusic);
+      minim.stop();
       firstMusic=false;
       actualMusic.close();
       mvtInterface.close();

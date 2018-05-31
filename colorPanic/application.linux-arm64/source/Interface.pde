@@ -1605,6 +1605,7 @@ class Interface {
           playerBase=append(playerBase, pseudo+"|"+bonusPoints.nbPoints+"|"+(levelNumber+1)+"|"+hour+":"+minute+":"+second+":"+str(((millisPaused-initialTime)-timeStopped+(1000*interfaces.is1000)+(interfaces.loadedHour*3600000)+(interfaces.loadedMinute*60000)+(interfaces.loadedSecond*1000)+(interfaces.firstLoadedMillis))-(second*1000)-(minute*60000)-(hour*3600000))+"|"+hero.nbMort+"|0000000");            
           saveStrings("data/playerBase.txt", playerBase);
           usersLength++;
+          sound.musictitle=true;
           playerBase=loadStrings("data/playerBase.txt");
           bonusPoints.nbPoints=0;
           levelNumber=0;
