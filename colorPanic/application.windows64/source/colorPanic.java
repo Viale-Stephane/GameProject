@@ -44,8 +44,8 @@ char GAUCHE='q', DROITE='d', HAUT='z', BAS='s', ACTION='j', PAUSE='p' ;
 PImage heroJumpBlueR, heroJumpBlueL, heroJumpGreenR, heroJumpGreenL, heroJumpBlackR, heroJumpBlackL, heroJumpPurpleR, heroJumpPurpleL, heroJumpRedR, heroJumpRedL, heroJumpVeridianR, heroJumpVeridianL, heroJumpGSwapR, heroJumpGSwapL;
 PImage heroIdleBlueL, heroIdleBlueR, heroIdleGreenL, heroIdleGreenR, heroIdleBlackL, heroIdleBlackR, heroIdlePurpleL, heroIdlePurpleR, heroIdleRedL, heroIdleRedR, heroIdleVeridianL, heroIdleVeridianR, heroIdleGSwapL, heroIdleGSwapR;
 PImage menuPNG, menuEmpty, timer, deathPNG, coin;
-PImage[] lvl=new PImage[9999];
-String [][]hitboxLvl=new String[9999][];
+PImage[] lvl=new PImage[60];
+String [][]hitboxLvl=new String[60][];
 
 PFont font, arial;
 
@@ -61,6 +61,8 @@ AudioPlayer actualMusic;//chargement de seulement 5 variables pour le son sinon 
 
 AudioSample jump;//et GSwap
 AudioSample TP;//et dash
+AudioSample dash;
+AudioSample Gswap;
 AudioSample powerup;
 AudioSample death;
 AudioSample validationInterface;
@@ -233,7 +235,7 @@ public void setup() {
   coin=loadImage("data/coin.png");
 
   font = createFont("Super Mario Bros. NES.ttf", 22);
-  arial = createFont("Arial", 21);
+  arial = createFont("Arial", 20);
   actualMusic=sound.musicBegin("data/Sound/Music/musicRetroRide.mp3");
   interfaces.playerBase=loadStrings("data/playerBase.txt");
 }
@@ -409,7 +411,7 @@ public void keyPressed() {
         if (bonusDash.dash==true && bonusDash.canDash==true) {//si on a le bonus pour dash et que l'on a pas déjà dash une fois en l'air
           bonusDash.trigDash=true;
           bonusDash.canDash=false;
-          TP.trigger();
+          dash.trigger();
         }
         if (bonusTP.bonusTP==true && bonusTP.canTP==true) {//si on a le bonus tp et que l'on pas déjà tp une fois en l'air
           bonusTP.trigTP=true;
@@ -426,14 +428,15 @@ public void keyPressed() {
         if (bonusGravitySwap.GSwap==true && bonusGravitySwap.trigGSwap==false && hero.jumping==false) { //si on a le bonus d'inversion de gravité, sans sauter, et que la gravité n'est pas inversé alors on l'inverse
           bonusGravitySwap.trigGSwap=true;
           bonusGravitySwap.timeActivationGSwap=true;
-          jump.trigger(); //son inversion de gravité
+          Gswap.trigger(); //son inversion de gravité
         } else if (bonusGravitySwap.GSwap==true && bonusGravitySwap.trigGSwap==true && hero.jumping==false) {//si on a le bonus d'inversion de gravité, sans sauter, et que la gravité n'est inversé alors on la remet normalement
           bonusGravitySwap.trigGSwap=false;
-          jump.trigger();//son inversion de gravité
+          Gswap.trigger();//son inversion de gravité
         }
       }
       if (key==PAUSE && isLooping() && interfaces.pause==false) {// si on appuie sur la touche de pause et que le jeu tourne, le met en pause
         millisPaused=millis();//récupère le temps auquel le jeu s'est mis en pause
+        sound.closeGameSound();
         interfaces.pause=true;
         interfaces.pause();
       } else if (key==PAUSE && interfaces.pause==true) {//si on appuie sur la touche de pause et que le jeu ne tourne pas, le relance
@@ -1776,7 +1779,6 @@ class Hero {
 }
 class Interface {
   boolean firstScreen=true, ecranTitre=false, setUsername=false, load=false, credit=false, leaderboard=false, firstLoad=true, firstLeaderboard=true, save=false, pause=false, importing=false, exporting=false;
-  ;
   int line=1, column=1;
   int actualPage=1, usernameNumber=0, usersLength=0;
   int testedValue=1;
@@ -2845,9 +2847,9 @@ class Interface {
     text("Identifiant :pi", 10, 100);
     text("Mot de passe :colorPanic", 10, 150);
     text("entrez la commande suivante :", 10, 200);
-    textSize(10);
+    textSize(9);
     textFont(arial);
-    text("\"scp -p ~/colorPanic/actualPlayer.txt pi@colorPanic:/home/pi/colorPanic/data/actualPlayer.txt\"", 10, 250);
+    text("\"scp -p ~/colorPanic/actualPlayer.txt pi@colorPanic:/home/pi/colorPanic/application.linux64/data/actualPlayer.txt\"", 10, 250);
     fill(255, 102, 0, 50);
     stroke(255, 102, 0);
     textFont(font);
@@ -2884,9 +2886,9 @@ class Interface {
     text("Identifiant :pi", 10, 100);
     text("Mot de passe :colorPanic", 10, 150);
     text("entrez la commande suivante :", 10, 200);
-    textSize(10);
+    textSize(9);
     textFont(arial);
-    text("\"scp -p pi@colorPanic:/home/pi/colorPanic/data/actualPlayer.txt ~/colorPanic/actualPlayer.txt\"", 10, 250);
+    text("\"scp -p pi@colorPanic:/home/pi/colorPanic/application.linux64/data/actualPlayer.txt ~/colorPanic/actualPlayer.txt\"", 10, 250);
     fill(255, 102, 0, 50);
     stroke(255, 102, 0);
     textFont(font);
@@ -3377,11 +3379,12 @@ class Interface {
           interfaces.firstLoad=true;
         } else if (line==2) {
           interfaces.pause=false;
-        } else {//retour au menu de démarrage
+          sound.closeInterfaceSound();
+        } else {
+          sound.musictitle=true;//retour au menu de démarrage
           playerBase=append(playerBase, pseudo+"|"+bonusPoints.nbPoints+"|"+(levelNumber+1)+"|"+hour+":"+minute+":"+second+":"+str(((millisPaused-initialTime)-timeStopped+(1000*interfaces.is1000)+(interfaces.loadedHour*3600000)+(interfaces.loadedMinute*60000)+(interfaces.loadedSecond*1000)+(interfaces.firstLoadedMillis))-(second*1000)-(minute*60000)-(hour*3600000))+"|"+hero.nbMort+"|0000000");            
           saveStrings("data/playerBase.txt", playerBase);
           usersLength++;
-          sound.musictitle=true;
           playerBase=loadStrings("data/playerBase.txt");
           bonusPoints.nbPoints=0;
           levelNumber=0;
@@ -3551,21 +3554,36 @@ class Sound {
     }
   }
 
-  public void musicFirst() {//fonction qui démarre la première musique du jeu
+ public void musicFirst() {//fonction qui démarre la première musique du jeu
     if (firstMusic==true) {
       musicStop(actualMusic);
       minim.stop();
       firstMusic=false;
       actualMusic.close();
-      mvtInterface.close();
-      validationInterface.close();
-      death=minim.loadSample("data/Sound/SFX/Death.mp3");
-      jump=minim.loadSample("data/Sound/SFX/Jump.mp3");
-      powerup=minim.loadSample("data/Sound/SFX/Powerup.mp3");
-      TP=minim.loadSample("data/Sound/SFX/TP.mp3");
+      closeInterfaceSound();
       String nameMusic=hitboxLvl[levelNumber][128*38];
       actualMusic=musicBegin("data/Sound/Music/"+nameMusic+".mp3");
     }
+  }
+  public void closeInterfaceSound() {
+    validationInterface.close();
+    mvtInterface.close();
+    death=minim.loadSample("data/Sound/SFX/Death.mp3");
+    jump=minim.loadSample("data/Sound/SFX/Jump.mp3");
+    powerup=minim.loadSample("data/Sound/SFX/Powerup.mp3");
+    dash=minim.loadSample("data/Sound/SFX/Dash.mp3");
+    Gswap=minim.loadSample("data/Sound/SFX/G-Swap.mp3");
+    TP=minim.loadSample("data/Sound/SFX/TP.mp3");
+  }
+  public void closeGameSound() {
+    death.close();
+    jump.close();
+    powerup.close();
+    dash.close();
+    Gswap.close();
+    TP.close();
+    validationInterface=minim.loadSample("Sound/SFX/validation.mp3");
+    mvtInterface=minim.loadSample("Sound/SFX/mvtInterface.mp3");
   }
 }
   public void settings() {  size(1024,600); }

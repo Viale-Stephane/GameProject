@@ -1,6 +1,5 @@
 class Interface {
   boolean firstScreen=true, ecranTitre=false, setUsername=false, load=false, credit=false, leaderboard=false, firstLoad=true, firstLeaderboard=true, save=false, pause=false, importing=false, exporting=false;
-  ;
   int line=1, column=1;
   int actualPage=1, usernameNumber=0, usersLength=0;
   int testedValue=1;
@@ -1069,9 +1068,9 @@ class Interface {
     text("Identifiant :pi", 10, 100);
     text("Mot de passe :colorPanic", 10, 150);
     text("entrez la commande suivante :", 10, 200);
-    textSize(10);
+    textSize(9);
     textFont(arial);
-    text("\"scp -p ~/colorPanic/actualPlayer.txt pi@colorPanic:/home/pi/colorPanic/data/actualPlayer.txt\"", 10, 250);
+    text("\"scp -p ~/colorPanic/actualPlayer.txt pi@colorPanic:/home/pi/colorPanic/application.linux64/data/actualPlayer.txt\"", 10, 250);
     fill(255, 102, 0, 50);
     stroke(255, 102, 0);
     textFont(font);
@@ -1108,9 +1107,9 @@ class Interface {
     text("Identifiant :pi", 10, 100);
     text("Mot de passe :colorPanic", 10, 150);
     text("entrez la commande suivante :", 10, 200);
-    textSize(10);
+    textSize(9);
     textFont(arial);
-    text("\"scp -p pi@colorPanic:/home/pi/colorPanic/data/actualPlayer.txt ~/colorPanic/actualPlayer.txt\"", 10, 250);
+    text("\"scp -p pi@colorPanic:/home/pi/colorPanic/application.linux64/data/actualPlayer.txt ~/colorPanic/actualPlayer.txt\"", 10, 250);
     fill(255, 102, 0, 50);
     stroke(255, 102, 0);
     textFont(font);
@@ -1601,11 +1600,12 @@ class Interface {
           interfaces.firstLoad=true;
         } else if (line==2) {
           interfaces.pause=false;
-        } else {//retour au menu de démarrage
+          sound.closeInterfaceSound();
+        } else {
+          sound.musictitle=true;//retour au menu de démarrage
           playerBase=append(playerBase, pseudo+"|"+bonusPoints.nbPoints+"|"+(levelNumber+1)+"|"+hour+":"+minute+":"+second+":"+str(((millisPaused-initialTime)-timeStopped+(1000*interfaces.is1000)+(interfaces.loadedHour*3600000)+(interfaces.loadedMinute*60000)+(interfaces.loadedSecond*1000)+(interfaces.firstLoadedMillis))-(second*1000)-(minute*60000)-(hour*3600000))+"|"+hero.nbMort+"|0000000");            
           saveStrings("data/playerBase.txt", playerBase);
           usersLength++;
-          sound.musictitle=true;
           playerBase=loadStrings("data/playerBase.txt");
           bonusPoints.nbPoints=0;
           levelNumber=0;

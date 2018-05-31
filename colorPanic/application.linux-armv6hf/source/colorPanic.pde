@@ -18,8 +18,8 @@ char GAUCHE='q', DROITE='d', HAUT='z', BAS='s', ACTION='j', PAUSE='p' ;
 PImage heroJumpBlueR, heroJumpBlueL, heroJumpGreenR, heroJumpGreenL, heroJumpBlackR, heroJumpBlackL, heroJumpPurpleR, heroJumpPurpleL, heroJumpRedR, heroJumpRedL, heroJumpVeridianR, heroJumpVeridianL, heroJumpGSwapR, heroJumpGSwapL;
 PImage heroIdleBlueL, heroIdleBlueR, heroIdleGreenL, heroIdleGreenR, heroIdleBlackL, heroIdleBlackR, heroIdlePurpleL, heroIdlePurpleR, heroIdleRedL, heroIdleRedR, heroIdleVeridianL, heroIdleVeridianR, heroIdleGSwapL, heroIdleGSwapR;
 PImage menuPNG, menuEmpty, timer, deathPNG, coin;
-PImage[] lvl=new PImage[9999];
-String [][]hitboxLvl=new String[9999][];
+PImage[] lvl=new PImage[60];
+String [][]hitboxLvl=new String[60][];
 
 PFont font, arial;
 
@@ -35,6 +35,8 @@ AudioPlayer actualMusic;//chargement de seulement 5 variables pour le son sinon 
 
 AudioSample jump;//et GSwap
 AudioSample TP;//et dash
+AudioSample dash;
+AudioSample Gswap;
 AudioSample powerup;
 AudioSample death;
 AudioSample validationInterface;
@@ -207,7 +209,7 @@ void setup() {
   coin=loadImage("data/coin.png");
 
   font = createFont("Super Mario Bros. NES.ttf", 22);
-  arial = createFont("Arial", 21);
+  arial = createFont("Arial", 20);
   actualMusic=sound.musicBegin("data/Sound/Music/musicRetroRide.mp3");
   interfaces.playerBase=loadStrings("data/playerBase.txt");
 }
@@ -383,7 +385,7 @@ void keyPressed() {
         if (bonusDash.dash==true && bonusDash.canDash==true) {//si on a le bonus pour dash et que l'on a pas déjà dash une fois en l'air
           bonusDash.trigDash=true;
           bonusDash.canDash=false;
-          TP.trigger();
+          dash.trigger();
         }
         if (bonusTP.bonusTP==true && bonusTP.canTP==true) {//si on a le bonus tp et que l'on pas déjà tp une fois en l'air
           bonusTP.trigTP=true;
@@ -400,14 +402,15 @@ void keyPressed() {
         if (bonusGravitySwap.GSwap==true && bonusGravitySwap.trigGSwap==false && hero.jumping==false) { //si on a le bonus d'inversion de gravité, sans sauter, et que la gravité n'est pas inversé alors on l'inverse
           bonusGravitySwap.trigGSwap=true;
           bonusGravitySwap.timeActivationGSwap=true;
-          jump.trigger(); //son inversion de gravité
+          Gswap.trigger(); //son inversion de gravité
         } else if (bonusGravitySwap.GSwap==true && bonusGravitySwap.trigGSwap==true && hero.jumping==false) {//si on a le bonus d'inversion de gravité, sans sauter, et que la gravité n'est inversé alors on la remet normalement
           bonusGravitySwap.trigGSwap=false;
-          jump.trigger();//son inversion de gravité
+          Gswap.trigger();//son inversion de gravité
         }
       }
       if (key==PAUSE && isLooping() && interfaces.pause==false) {// si on appuie sur la touche de pause et que le jeu tourne, le met en pause
         millisPaused=millis();//récupère le temps auquel le jeu s'est mis en pause
+        sound.closeGameSound();
         interfaces.pause=true;
         interfaces.pause();
       } else if (key==PAUSE && interfaces.pause==true) {//si on appuie sur la touche de pause et que le jeu ne tourne pas, le relance
